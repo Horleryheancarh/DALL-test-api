@@ -2,7 +2,7 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
 
-import connect from './database/connect.js';
+import { connectDB } from './database/connect.js';
 import dalleRoutes from './routes/dalle.routes.js'
 import postRoutes from './routes/post.routes.js'
 
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 const startServer = async() => {
   try {
-    connect(process.env.MONGO_URL);
+    connectDB(process.env.MONGO_URL);
 
     app.listen(process.env.PORT, () => 
       console.log('Server has started on port 8080')
@@ -30,3 +30,5 @@ const startServer = async() => {
     console.error(error);
   }
 }
+
+startServer();

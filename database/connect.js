@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export default connectDB = (url) => {
+export const connectDB = (url) => {
   mongoose.set('strictQuery', true);
 
   mongoose.connect(url)
